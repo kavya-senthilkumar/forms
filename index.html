@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #d6eaf8, #f9e79f);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        #user-form {
+            width: 70%;
+            margin: 0 auto;
+            background: linear-gradient(to bottom right, #f9e79f, #d6eaf8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        #display-info {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        #display-info h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .info-section {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .info-section h4 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Details Form</h2>
+    <form id="user-form" onsubmit="printvalue(); return false;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" oninput="enable()" />
+
+        <label for="roll">Roll Number:</label>
+        <input type="text" id="roll" oninput="enable()" disabled />
+
+        <label for="dept">Department:</label>
+        <input type="text" id="dept" oninput="enable()" disabled />
+
+        <label for="year">Year of Studying:</label>
+        <input type="number" id="year" oninput="enable()" disabled />
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" oninput="enable()" disabled />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" oninput="enable()" disabled />
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" oninput="enable()" pattern="[0-9]{10}" disabled />
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" disabled />
+
+        <button type="submit">Submit</button>
+    </form>
+    <div id="display-info">
+        <h3>Entered Details:</h3>
+        <div class="info-section" id="pname"></div>
+        <div class="info-section" id="proll"></div>
+        <div class="info-section" id="pdept"></div>
+        <div class="info-section" id="pyear"></div>
+        <div class="info-section" id="page"></div>
+        <div class="info-section" id="pdob"></div>
+        <div class="info-section" id="pmobile"></div>
+        <div class="info-section" id="pemail"></div>
+    </div>
+    <script>
+        function printvalue() {
+            var name = document.getElementById("name").value;
+            var roll = document.getElementById("roll").value;
+            var dept = document.getElementById("dept").value;
+            var year = document.getElementById("year").value;
+            var age = document.getElementById("age").value;
+            var mobile = document.getElementById("mobile").value;
+            var dob = document.getElementById("dob").value;
+            var email = document.getElementById("email").value;
+
+            document.getElementById("pname").innerHTML = "<h4>Name: " + name + "</h4>";
+            document.getElementById("proll").innerHTML = "<h4>Roll Number: " + roll + "</h4>";
+            document.getElementById("pdept").innerHTML = "<h4>Department: " + dept + "</h4>";
+            document.getElementById("pyear").innerHTML = "<h4>Year of Studying: " + year + "</h4>";
+            document.getElementById("page").innerHTML = "<h4>Age: " + age + "</h4>";
+            document.getElementById("pmobile").innerHTML = "<h4>Mobile: " + mobile + "</h4>";
+            document.getElementById("pdob").innerHTML = "<h4>Date of Birth: " + dob + "</h4>";
+            document.getElementById("pemail").innerHTML = "<h4>Email: " + email + "</h4>";
+        }
+
+        function enable() {
+            var nameInput = document.getElementById("name");
+            var rollInput = document.getElementById("roll");
+            var deptInput = document.getElementById("dept");
+            var yearInput = document.getElementById("year");
+            var ageInput = document.getElementById("age");
+            var mobileInput = document.getElementById("mobile");
+            var dobInput = document.getElementById("dob");
+            var emailInput = document.getElementById("email");
+
+            if (nameInput.value.trim() !== "") {
+                rollInput.disabled = false;
+            } else {
+                rollInput.disabled = true;
+            }
+
+            if (rollInput.value.trim() !== "") {
+                deptInput.disabled = false;
+            } else {
+                deptInput.disabled = true;
+            }
+
+            if (deptInput.value.trim() !== "") {
+                yearInput.disabled = false;
+            } else {
+                yearInput.disabled = true;
+            }
+
+            if (yearInput.value.trim() !== "") {
+                ageInput.disabled = false;
+            } else {
+                ageInput.disabled = true;
+            }
+
+            if (ageInput.value.trim() !== "") {
+                dobInput.disabled = false;
+            } else {
+                dobInput.disabled = true;
+            }
+
+            if (dobInput.value.trim() !== "") {
+                mobileInput.disabled = false;
+            } else {
+                mobileInput.disabled = true;
+            }
+
+            if (mobileInput.value.trim() !== "") {
+                emailInput.disabled = false;
+            } else {
+                emailInput.disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>
